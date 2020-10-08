@@ -1,0 +1,11 @@
+module CurlRegister(Y, w, clock, resetn); 
+input w, clock, resetn;
+output reg [2:0] Y;
+
+  always @ (posedge clock)
+  if (!resetn) Y <= 3’b001; else
+  begin
+    Y[0] <= Y[1];
+Y[1] <= Y[0] & Y[2]; Y[2] <= w;
+  end 
+endmodule
